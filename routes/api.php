@@ -19,5 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/trigger', [ApiController::class, 'trigger_info']);
 Route::post('/payment-handler', [ApiController::class, 'payment_handler']);
 Route::post('/init-camera', [ApiController::class, 'init_camera'])->name('init_camera');

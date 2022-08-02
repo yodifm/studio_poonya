@@ -62,7 +62,7 @@
               <button class="btn-get-started scrollto" id="pay-button">Start Photo</button>&nbsp;&nbsp;&nbsp;
               <button class="btn-get-started2 scrollto">Booking Photo</button>
             </div>
-            
+
             <div class="mt-3">
                 <form action="{{ route('redeemCode') }}">
                     <i class="fas fa-tags" style="color: white; size:20px" ></i>
@@ -72,7 +72,7 @@
             </div>
           </div>
         </div>
-    
+
       </section>
 
     {{-- <section id="hero" class="d-flex align-items-center">
@@ -117,6 +117,14 @@
     <script type="text/javascript">
         $(function() {
             $("#pay-button").click(function() {
+                $.ajax('{{config("app.url")}}api/init-camera', {
+                    method:'post',
+                })
+                // $.ajax('http://localhost:1500/api/start?mode=print&password=I9okCyP7dih2QEQs', {
+                //     success: function(data, status, xhr) {
+                //         console.log(data);
+                //     }
+                // })
                 $.ajax('{{config("app.url")}}generatePayment', {
                     //  dataType: 'json', // type of response data
                     timeout: 2000, // timeout milliseconds
@@ -147,7 +155,7 @@
                         })
                         //  $('p').append(data.firstName + ' ' + data.middleName + ' ' + data.lastName);
                     },
-                    error: function(jqXhr, textStatus, errorMessage) { // error callback 
+                    error: function(jqXhr, textStatus, errorMessage) { // error callback
                         console.log(errorMessage)
                     }
                 });
