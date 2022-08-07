@@ -22,7 +22,7 @@ Route::get('/',[webcontroller::class,'payment']);
 Route::get('/payment', [webcontroller::class,'payment']);
 Route::post('/payment',[webcontroller::class,'payment_post']);
 
-Route::get('/dashboard',[webcontroller::class,'dashboard'])->name('dashboard');
+Route::get('/dashboard',[webcontroller::class,'dashboard'])->name('dashboard')->middleware('auth');
 Route::get('/generate',[webcontroller::class,'generate'])->name('generate');
 
 Route::get('/login',[LoginController::class,'loginpage'])->name('login');
@@ -40,7 +40,7 @@ Route::get('/Test', function () {
     // $answer = shell_exec("C:\\WINDOWS\\system32\\notepad.exe");
     $answer = shell_exec("C:\\Program Files\\dslrBooth\\dslrBooth.exe");
     echo $answer;
-    
+
 });
 
 

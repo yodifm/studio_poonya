@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redis;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -46,7 +47,8 @@ class webcontroller extends Controller
             // $answer = shell_exec("C:\\Program Files\\dslrBooth\\dslrBooth.exe");
             // $answer = shell_exec("START /MAX notepad");
             // $answer = shell_exec("START /MAX notepad");
-            $answer = shell_exec("cd C:/Program Files/dslrBooth && START /MAX dslrBooth");
+            shell_exec('"C:\Users\RakaP\AppData\Local\Programs\UiPath\Studio\UiRobot.exe" -file "C:\Users\RakaP\OneDrive\Documents\UiPath\TriggerBasedAttendedAutomation\Main - Test.xaml"');
+            // $answer = shell_exec("cd C:/Program Files/dslrBooth && START /MAX dslrBooth");
             return redirect()->back()->with("success", "siap foto");
         }
         elseif($order->status_code == "1")
@@ -62,9 +64,11 @@ class webcontroller extends Controller
 
     public function generateCode(Request $request)
     {
-        $firstName = 'FromCashier';
+        // $firstName = 'FromCashier';
+        $firstName = Auth::user()->name ?? 'FromCashier';
         $lastName = time();
-        $email = 'fromcashier@getnada.com';
+        // $email = 'fromcashier@getnada.com';
+        $email = Auth::user()->email ?? 'fromcashier@getnada.com';
         $phoneNumber = '08123';
         $grossAmount = '25000';
         $status_code = 0;
@@ -91,7 +95,7 @@ class webcontroller extends Controller
         $email = 'customer@getnada.com';
         $phoneNumber = '08123';
         $grossAmount = '25000';
-        $status_code = 1;
+        // $status_code = 1;
 
         $order = new Order();
         $order->uname = $firstName . '-' . $lastName;
@@ -99,14 +103,14 @@ class webcontroller extends Controller
         $order->number = $phoneNumber;
         $order->order_id = rand();
         $order->gross_amount = $grossAmount;
-        $order->status_code = $status_code;
+        // $order->status_code = $status_code;
         $order->save();
 
 
         // Set your Merchant Server Key
         // return config('app.midtrans_key');
         \Midtrans\Config::$serverKey = config('app.midtrans_key');
-        
+
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
         // Set sanitization on (default)
@@ -203,7 +207,7 @@ class webcontroller extends Controller
 
         // $snapToken = \Midtrans\Snap::getSnapToken($params);
 
-        // return $snapToken; 
+        // return $snapToken;
 
         return view('payment');
         // return view('payment', ['snap_token' => $snapToken]);

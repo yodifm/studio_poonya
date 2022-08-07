@@ -25,15 +25,18 @@ class ApiController extends Controller
 
     public function init_camera(Request $request)
     {
-        $url ='http://localhost:1500/api/start?mode=print&password=I9okCyP7dih2QEQs';
+        shell_exec('"C:\Users\RakaP\AppData\Local\Programs\UiPath\Studio\UiRobot.exe" -file "C:\Users\RakaP\OneDrive\Documents\UiPath\TriggerBasedAttendedAutomation\Main - Test.xaml"');
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$url);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        $output = curl_exec($ch);
-        curl_close($ch);
+
+        // $url ='http://localhost:1500/api/start?mode=print&password=I9okCyP7dih2QEQs';
+
+        // $ch = curl_init();
+        // curl_setopt($ch, CURLOPT_URL,$url);
+        // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // curl_setopt($ch, CURLOPT_HEADER, false);
+        // $output = curl_exec($ch);
+        // curl_close($ch);
 
         // shell_exec("cd C:/Program Files/dslrBooth && START /MAX dslrBooth");
     }

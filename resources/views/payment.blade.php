@@ -5,8 +5,13 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 
     <!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
-    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
-        data-client-key="SB-Mid-client-LuRh4t6hempU6vad"></script>
+    <script type="text/javascript"
+        src="https://app.sandbox.midtrans.com/snap/snap.js"
+        {{-- src="https://app.midtrans.com/snap/snap.js" --}}
+        {{-- data-client-key="SB-Mid-client-LuRh4t6hempU6vad" --}}
+        data-client-key="SB-Mid-client-zcC2S_n3IG42W4D5"
+        {{-- data-client-key="Mid-client-XZCR9t5ePdhcGaNC" --}}
+        ></script>
     <!-- Note: replace with src="https://app.midtrans.com/snap/snap.js" for Production environment -->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
@@ -117,9 +122,9 @@
     <script type="text/javascript">
         $(function() {
             $("#pay-button").click(function() {
-                $.ajax('{{config("app.url")}}api/init-camera', {
-                    method:'post',
-                })
+                // $.ajax('{{config("app.url")}}api/init-camera', {
+                //     method:'post',
+                // })
                 // $.ajax('http://localhost:1500/api/start?mode=print&password=I9okCyP7dih2QEQs', {
                 //     success: function(data, status, xhr) {
                 //         console.log(data);
